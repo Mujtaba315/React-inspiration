@@ -1,17 +1,30 @@
-import FancyText from './FancyText';
-import InspirationGenerator from './InspirationGenerator';
-import Copyright from './Copyright';
+import Cup from './Cup.jsx'
+import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import Blogs from "./pages/Blogs";
+import Contact from "./pages/Contact";
+import NoPage from "./pages/NoPage";
 
 function App() {
   return (
     <>
-      <FancyText title text="Get Inspired App" />
-      <InspirationGenerator>
-        <Copyright year={2004} />
-      </InspirationGenerator>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="blogs" element={<Blogs />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="*" element={<NoPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+      <Cup />
+      <Cup />
+      <Cup />
     </>
   );
 }
-
 
 export default App;
